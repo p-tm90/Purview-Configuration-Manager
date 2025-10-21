@@ -100,7 +100,7 @@ function Configure-MicrosoftModules{
         #If current installed module version is mismatched...
         If($CurrentModule.Version -ne $a.Version){
             Write-Host "`nInstalled module $($a.Name) is missing or our of date!`nCurrent installed version is: $($CurrentModule.Version)`nWeb version is: $($a.Version)" -ForegroundColor Red
-            If (!CurrentModule){
+            If (!$CurrentModule){
                 Write-Host "Installed module $($a.Name)..."
                 Install-Module -Name $($a.Name) -Scope $InstallScope
             }
