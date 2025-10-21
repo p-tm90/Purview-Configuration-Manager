@@ -30,7 +30,7 @@ Write-Host "Gathering DLP info types configuration from Purview."
 $DLPSITs = Get-DLPSensitiveInformationType
 
 #Processing raw information from Purview into readable format with highlights.
-$Label = @()
+$LabelInfo = @()
 Foreach ($Label in $Labels){
     $LabelInfo += [PSCustomObject]@{
         GUID = $Label.GUID
@@ -158,7 +158,7 @@ Foreach ($a in $DLPPolicies){
     }
 }
 
-$DLPSITs | ForEach-Object {$_ | Select-Object * | Out-File -FilePath "$($FilePath)_DLPSITs_$($.GUID).txt"}
+$DLPSITs | ForEach-Object {$_ | Select-Object * | Out-File -FilePath "$($FilePath)_DLPSITs_$($_.GUID).txt"}
 
 #Export processed information to Excel outputs file.
 Write-Host "Exporting processed data to outputs folder path as single XLSX file."
