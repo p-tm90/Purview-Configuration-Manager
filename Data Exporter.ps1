@@ -9,8 +9,9 @@ $OutputsPath = "$Location\Outputs"
 #Install & update relevant Purview modules.
 Configure-MicrosoftModules -TypeOfConfiguration Purview -InstallScope CurrentUser
 
-#Core script
+#Core script pre-requisites setup.
 $Time = (Get-Date).ToString('yyyy-MM-dd-HHmmss')
+New-Item -ItemType Directory -Path $OutputsPath -Name Outputs
 
 #Information gathering from Purview
 Write-Host "Gathering sensitivity label configuration from Purview."
